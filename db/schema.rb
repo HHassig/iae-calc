@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_04_201030) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_05_100349) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "surveys", force: :cascade do |t|
+    t.boolean "death"
+    t.boolean "life_threatening"
+    t.boolean "sig_consequences"
+    t.boolean "incorrect_with_consent"
+    t.boolean "intraoperative_course_change"
+    t.boolean "unanticipated_conversion"
+    t.boolean "aborted_incomplete"
+    t.boolean "unplanned_stoma"
+    t.boolean "unplanned_removal"
+    t.boolean "intervention"
+    t.boolean "post_op_care_change"
+    t.boolean "intensive_care"
+    t.boolean "re_operation"
+    t.boolean "blood_loss_high"
+    t.boolean "more_blood_units"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false

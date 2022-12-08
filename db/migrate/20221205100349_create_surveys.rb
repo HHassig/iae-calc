@@ -2,8 +2,8 @@ class CreateSurveys < ActiveRecord::Migration[7.0]
   def change
     create_table :surveys do |t|
       t.boolean :death
-      t.boolean :life-threatening
-      t.boolean :sig-consequences
+      t.boolean :life_threatening
+      t.boolean :sig_consequences
       t.boolean :incorrect_with_consent
       t.boolean :intraoperative_course_change
       t.boolean :unanticipated_conversion
