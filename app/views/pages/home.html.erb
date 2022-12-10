@@ -1,47 +1,219 @@
 <div class="card-trip">
   <img src="https://i.imgur.com/JzXEDyR.png" />
   <div class="card-trip-infos">
-    <div>
+    <div class="title">
       <h2>Intraoperative Adverse Event (iAE) Grade Calculator</h2>
-      <p>Short description here!</p>
     </div>
-    <h2 class="card-trip-pricing">£99.99</h2>
-    <img src="https://kitt.lewagon.com/placeholder/users/krokrob" class="card-trip-user avatar-bordered" />
+  </div>
+  <div class="card-product">
+    <div class="live-results">
+      <div class="live-result">
+        <h3>EAUiaiC</h3>
+        <p>(0 - 5B)</p>
+      </div>
+      <div class="live-result">
+        <h3>iAE Severity</h3>
+        <p>(I - VI)</p>
+      </div>
+      <div class="live-result">
+        <h3>Modified Satava</h3>
+        <p>(I - III)</p>
+      </div>
+      <div class="live-result">
+        <h3>ClassIntra</h3>
+        <p>(0 - V)</p>
+      </div>
+      <div class="live-result">
+        <h3>EAES</h3>
+        <p>(1 - 5)</p>
+      </div>
+    </div>
   </div>
 
   <div class="card-product">
     <div class="card-product-infos">
       <h2>Patient</h2>
-      <p>Was the iAE associated with death of the patient?:</p>
-      <p>Was the iAE immediately life-threatening?:</p>
-      <p>Were there significant consequences to the patient as a result of the iAE?: [TT]</p>
-      <p>Was the incorrect site, side, or surgical approach used without consent?:</p>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Was the iAE associated with death of the patient?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="death_yes" name="death" value="yes" />
+          <label for="death_yes" class="yes">Yes</label>
+          <input type="radio" id="death_no" name="death" value="no" checked/>
+          <label for="death_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Was the iAE immediately life-threatening?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="life_threatening_yes" name="life_threatening" value="yes" />
+          <label for="life_threatening_yes" class="yes">Yes</label>
+          <input type="radio" id="life_threatening_no" name="life_threatening" value="no" checked/>
+          <label for="life_threatening_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Were there significant consequences to the patient as a result of the iAE?: [TT]</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="sig_consequences_yes" name="sig_consequences" value="yes" />
+          <label for="sig_consequences_yes" class="yes">Yes</label>
+          <input type="radio" id="sig_consequences_no" name="sig_consequences" value="no" checked/>
+          <label for="sig_consequences_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Was the incorrect site, side, or surgical approach used without consent?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="incorrect_with_consent_yes" name="incorrect_with_consent" value="yes" />
+          <label for="incorrect_with_consent_yes" class="yes">Yes</label>
+          <input type="radio" id="incorrect_with_consent_no" name="incorrect_with_consent" value="no" checked/>
+          <label for="incorrect_with_consent_no" class="no">No</label>
+        </div>
+      </div>
     </div>
   </div>
+
   <div class="card-product">
     <div class="card-product-infos">
       <h2>Procedure</h2>
-      <p>Were there any changes in the ideal intraoperative course related to iAE?: [TT]</p>
-      <p>Was there an unanticipated conversion of approach or significant change to the operative steps of the originally planned procedure due to iAE?:</p>
-      <p>Was planned procedure aborted or incomplete due to iAE?:</p>
-      <p>Unplanned stoma as a result of iAE?:</p>
-      <p>Unplanned tissue or organ removal as a result of iAE?:</p>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Were there any changes in the ideal intraoperative course related to iAE?: [TT]</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="intraoperative_course_change_yes" name="intraoperative_course_change" value="yes" />
+          <label for="intraoperative_course_change_yes" class="yes">Yes</label>
+          <input type="radio" id="intraoperative_course_change_no" name="intraoperative_course_change" value="no" checked/>
+          <label for="intraoperative_course_change_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Was there an unanticipated conversion of approach or significant change to the operative steps of the originally planned procedure due to iAE?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="unanticipated_conversion_yes" name="unanticipated_conversion" value="yes" />
+          <label for="unanticipated_conversion_yes" class="yes">Yes</label>
+          <input type="radio" id="unanticipated_conversion_no" name="unanticipated_conversion" value="no" checked/>
+          <label for="unanticipated_conversion_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Was planned procedure aborted or incomplete due to iAE?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="aborted_incomplete_yes" name="aborted_incomplete" value="yes" />
+          <label for="aborted_incomplete_yes" class="yes">Yes</label>
+          <input type="radio" id="aborted_incomplete_no" name="aborted_incomplete" value="no" checked/>
+          <label for="aborted_incomplete_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Unplanned stoma as a result of iAE?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="unplanned_stoma_yes" name="unplanned_stoma" value="yes" />
+          <label for="unplanned_stoma_yes" class="yes">Yes</label>
+          <input type="radio" id="unplanned_stoma_no" name="unplanned_stoma" value="no" checked/>
+          <label for="unplanned_stoma_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Unplanned tissue or organ removal as a result of iAE?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="unplanned_removal_yes" name="unplanned_removal" value="yes" />
+          <label for="unplanned_removal_yes" class="yes">Yes</label>
+          <input type="radio" id="unplanned_removal_no" name="unplanned_removal" value="no" checked/>
+          <label for="unplanned_removal_no" class="no">No</label>
+        </div>
+      </div>
     </div>
   </div>
   <div class="card-product">
     <div class="card-product-infos">
       <h2>iAE Management</h2>
-      <p>Was any surgical repair, medical treatment, or other intervention required?: [TT]</p>
-      <p>Was there a change in post-operative care due to the iAE?:</p>
-      <p>Did the iAE or its management necessitate intensive care admission?:</p>
-      <p>Was the intraoperative injury missed, necessitating re-operation within 7 days of index procedure?:</p>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Was any surgical repair, medical treatment, or other intervention required?: [TT]</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="intervention_yes" name="intervention" value="yes" />
+          <label for="intervention_yes" class="yes">Yes</label>
+          <input type="radio" id="intervention_no" name="intervention" value="no" checked/>
+          <label for="intervention_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Was there a change in post-operative care due to the iAE?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="post_op_care_change_yes" name="post_op_care_change" value="yes" />
+          <label for="post_op_care_change_yes" class="yes">Yes</label>
+          <input type="radio" id="post_op_care_change_no" name="post_op_care_change" value="no" checked/>
+          <label for="post_op_care_change_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Did the iAE or its management necessitate intensive care admission?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="intensive_care_yes" name="intensive_care" value="yes" />
+          <label for="intensive_care_yes" class="yes">Yes</label>
+          <input type="radio" id="intensive_care_no" name="intensive_care" value="no" checked/>
+          <label for="intensive_care_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Was the intraoperative injury missed, necessitating re-operation within 7 days of index procedure?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="re_operation_yes" name="re_operation" value="yes" />
+          <label for="re_operation_yes" class="yes">Yes</label>
+          <input type="radio" id="re_operation_no" name="re_operation" value="no" checked/>
+          <label for="re_operation_no" class="no">No</label>
+        </div>
+      </div>
     </div>
   </div>
   <div class="card-product">
     <div class="card-product-infos">
       <h2>Bleeding Related</h2>
-      <p>Was blood loss appreciably over normal range for procedure?: [TT]</p>
-      <p>Were 2 or more units of blood products required to manage iAE?:</p>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Was blood loss appreciably over normal range for procedure?: [TT]</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="blood_loss_high_yes" name="blood_loss_high" value="yes" />
+          <label for="blood_loss_high_yes" class="yes">Yes</label>
+          <input type="radio" id="blood_loss_high_no" name="blood_loss_high" value="no" checked/>
+          <label for="blood_loss_high_no" class="no">No</label>
+        </div>
+      </div>
+      <div class="card-product-full">
+        <div class="card-product-question">
+          <p>Were 2 or more units of blood products required to manage iAE?:</p>
+        </div>
+        <div class="switch-field">
+          <input type="radio" id="more_blood_units_yes" name="more_blood_units" value="yes" />
+          <label for="more_blood_units_yes" class="yes">Yes</label>
+          <input type="radio" id="more_blood_units_no" name="more_blood_units" value="no" checked/>
+          <label for="more_blood_units_no" class="no">No</label>
+        </div>
+      </div>
     </div>
   </div>
 </div>
