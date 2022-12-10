@@ -79,7 +79,8 @@
   width: 100%;
 }
 .card-product-question {
-  width: 80%;
+  width: 75%;
+  margin-left: 0.5em;
 }
 .card-product {
   width: 60%;
@@ -103,6 +104,7 @@
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
+  margin-left: 0.5em;
 }
 
 .switch-field input {
@@ -156,4 +158,36 @@ border-radius: 4px 0 0 4px;
 }
 .live-result h3 {
   font-size: 1.5em;
+}
+
+
+// 320px — 480px: Mobile devices
+// 481px — 768px: iPads, Tablets
+// 769px — 1024px: Small screens, laptops
+
+.card-trip {
+  width: auto;
+}
+
+@media (max-width: 880px) {
+  .switch-field {
+    width: 100%;
+  }
+}
+@media (max-width: 580px) {
+  .card-product-full {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 0.5em;
+  }
+  .switch-field {
+    justify-content: flex-start;
+    padding: 0;
+  }
+}
+@media (max-width: 540px) {
+  /* For a screen < 540px, this CSS will be read */
+  .container {
+    width: 300px;
+  }
 }
