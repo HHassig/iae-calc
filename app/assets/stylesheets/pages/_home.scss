@@ -188,8 +188,11 @@ border-radius: 4px 0 0 4px;
   .switch-field {
     width: 100%;
   }
-  .title h2{
+  .title h2 {
     font-size: 1.7em;
+  }
+  .live-result h3 {
+    font-size: 1.15em;
   }
 }
 @media (max-width: 800px) {
@@ -198,6 +201,9 @@ border-radius: 4px 0 0 4px;
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 0.5em;
   }
+  .live-result h3 {
+    font-size: 1.1em;
+  }
 }
 @media (max-width: 650px) {
   .live-results {
@@ -205,8 +211,11 @@ border-radius: 4px 0 0 4px;
     grid-template-columns: 1fr 1fr;
     grid-gap: 0.5em;
   }
-  .title h2{
+  .title h2 {
     font-size: 1.25em;
+  }
+  .live-result h3 {
+    font-size: 1em;
   }
 }
 @media (max-width: 580px) {
