@@ -5,12 +5,13 @@ export default class extends Controller {
   connect() {
     console.log("Hi");
     // load default results
-    var eauiaic = "No record";
-    var iaeseverity = "No record";
-    var modifiedsatava = "No record";
-    var classintra = "No record";
-    var suffixt = "No record";
-    var eaes = "No record";
+    // var eauiaic = "No record";
+    // var iaeseverity = "No record";
+    // var modifiedsatava = "No record";
+    // var classintra = "No record";
+    // var suffixt = "No record";
+    // var eaes = "No record";
+    const eauiaic = document.querySelector("#eauiaic");
     $('input[type=radio]').click(function(e) {
       var selected = $("input[type='radio'][name='death']:checked");
       var death = selected.val();
@@ -57,6 +58,7 @@ export default class extends Controller {
       var selected = $("input[type='radio'][name='twounits']:checked");
       var twounits = selected.val();
       $('.twounitsResult').html(twounits);
+      eauiaic.insertAdjacentHTML("beforeend", death);
     });
   }
 }
