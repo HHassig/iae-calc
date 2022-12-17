@@ -1,6 +1,7 @@
 // Specific CSS for your home-page
 .card-trip {
   // overflow: hidden;
+  padding-bottom: 1em;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   text-align: center;
@@ -272,6 +273,6 @@ border-radius: 4px 0 0 4px;
   top: 1em;
   z-index: 2;
 }
-// .sticky + .content {
-//   padding-top: 60px;
-// }
+.sticky + .content {
+  padding-top: 60px;
+}

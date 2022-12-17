@@ -63,7 +63,7 @@
         </div>
         <div class="card-product-full">
           <div class="card-product-question">
-            <p>Were there significant consequences to the patient as a result of the iAE?: [TT]</p>
+            <p>Were there significant consequences to the patient as a result of the iAE?: <i class="fa-solid fa-circle-info" data-toggle="tooltip" data-placement="right" title="Some examples of iAEs with significant consequences includes injury to or unplanned removal of an otherwise healthy major organ (e.g. unplanned pulmonectomy, nephrectomy) and events that are exceedingly challenging to manage in a controlled manner without potential for long-term patient consequences (e.g. increased risk of postoperative multiorgan failure with major blood transfusion)."></i></p>
           </div>
           <div class="switch-field">
             <input type="radio" id="sig_consequences_yes" name="sig_consequences" value="yes" />
@@ -90,7 +90,7 @@
         <h2>Procedure</h2>
         <div class="card-product-full">
           <div class="card-product-question">
-            <p>Were there any changes in the ideal intraoperative course related to iAE?: [TT]</p>
+            <p>Were there any changes in the ideal intraoperative course related to iAE?: <i class="fa-solid fa-circle-info" data-toggle="tooltip" data-placement="right" title="Changes in course include minor incidents such as unintended cauterization, equipment malfunction, unanticipated anesthesiologic challenges, or procedural delays regardless of consequence or management."></i></p>
           </div>
           <div class="switch-field">
             <input type="radio" id="intraoperative_course_change_yes" name="intraoperative_course_change" value="yes" />
@@ -150,7 +150,7 @@
         <h2>iAE Management</h2>
         <div class="card-product-full">
           <div class="card-product-question">
-            <p>Was any surgical repair, medical treatment, or other intervention required?: [TT]</p>
+            <p>Was any surgical repair, medical treatment, or other intervention required?: <i class="fa-solid fa-circle-info" data-toggle="tooltip" data-placement="right" title='Standard procedural management (e.g. cauterization, use of prothombotic material, small vessel ligation) does not qualify as "repair."'></i></p>
           </div>
           <div class="switch-field">
             <input type="radio" id="intervention_yes" name="intervention" value="yes" />
@@ -199,7 +199,7 @@
         <h2>Bleeding Related</h2>
         <div class="card-product-full">
           <div class="card-product-question">
-            <p>Was blood loss appreciably over normal range for procedure?: [TT]</p>
+            <p>Was blood loss appreciably over normal range for procedure?: <i class="fa-solid fa-circle-info" data-toggle="tooltip" data-placement="right" title='Per Kazaryan, et al. (2013): "A normal range of blood loss for each particular procedure is subjective in a certain degree, but one can quantify it in regard to different procedures based both on contemporary scientific literature and values typical for own institution"'></i></p>
           </div>
           <div class="switch-field">
             <input type="radio" id="blood_loss_high_yes" name="blood_loss_high" value="yes" />
@@ -223,3 +223,8 @@
     </div>
   </div>
 </div>
+<script>
+  $(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+  })
+</script>
