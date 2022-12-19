@@ -25,3 +25,16 @@
       <% end %>
     </div>
 </div>
+
+
+<fieldset class="mb-3 radio_buttons optional survey_death">
+  <input type="hidden" name="survey[death]" value="" autocomplete="off">
+  <div class="form-check">
+    <input class="form-check-input radio_buttons optional" type="radio" value="true" name="survey[death]" id="survey_death_true">
+    <label class="form-check-label collection_radio_buttons" for="survey_death_true">Yes</label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input radio_buttons optional" readonly="readonly" type="radio" value="false" name="survey[death]" id="survey_death_false">
+    <label class="form-check-label collection_radio_buttons" for="survey_death_false">No</label>
+  </div>
+</fieldset>
