@@ -2,6 +2,7 @@ class SurveysController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def home
+    @survey = Survey.new
   end
 
   def show
@@ -10,7 +11,6 @@ class SurveysController < ApplicationController
 
   def index
     @surveys = Survey.all
-    @survey = Survey.new
   end
 
   def new

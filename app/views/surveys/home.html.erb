@@ -45,10 +45,7 @@
               <p>Was the iAE associated with death of the patient?:</p>
             </div>
             <div class="switch-field" name="switch-field">
-              <input type="radio" id="death_yes" name="death" value="yes" />
-              <label for="death_yes" class="yes">Yes</label>
-              <input type="radio" id="death_no" name="death" value="no" checked/>
-              <label for="death_no" class="no">No</label>
+              <%= f.input :death, as: :radio_buttons, legend_tag: false %>
             </div>
           </div>
           <div class="card-product-full">
@@ -223,6 +220,7 @@
         </div>
       </div>
     </div>
+    <%= f.submit class:"btn-submit btn btn-gradient" %>
   <% end %>
 </div>
 <script>
