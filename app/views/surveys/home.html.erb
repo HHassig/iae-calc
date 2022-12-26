@@ -223,6 +223,15 @@
     <%= f.submit class:"btn-submit btn btn-gradient" %>
   <% end %>
 </div>
+
+
+<%= simple_form_for @survey, data:{ turbo: false } do |f| %>
+  <%= f.input :death, as: :hidden %>
+  <label class="yes" data-value="1">Yes</label>
+  <label class="no" data-value="0">No</label>
+<% end %>
+
+
 <script>
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
