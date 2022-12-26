@@ -23,8 +23,6 @@ FROM quay.io/evl.ms/fullstaq-ruby:${RUBY_VERSION}-${VARIANT} as base
 
 LABEL fly_launch_runtime="rails"
 
-ARG NODE_VERSION=16.15.1
-ARG YARN_VERSION=1.22.19
 ARG BUNDLER_VERSION=2.3.26
 
 ARG RAILS_ENV=production
@@ -42,11 +40,7 @@ RUN mkdir /app
 WORKDIR /app
 RUN mkdir -p tmp/pids
 
-RUN curl https://get.volta.sh | bash
-ENV VOLTA_HOME /root/.volta
-ENV PATH $VOLTA_HOME/bin:/usr/local/bin:$PATH
-RUN volta install node@${NODE_VERSION} yarn@${YARN_VERSION} && \
-    gem update --system --no-document && \
+RUN gem update --system --no-document && \
     gem install -N bundler -v ${BUNDLER_VERSION}
 
 #######################################################################
@@ -75,16 +69,6 @@ RUN bundle install && rm -rf vendor/bundle/ruby/*/cache
 
 #######################################################################
 
-# install node modules
-
-FROM build_deps as node_modules
-
-COPY package*json ./
-COPY yarn.* ./
-RUN yarn install
-
-#######################################################################
-
 # install deployment packages
 
 FROM base
@@ -104,9 +88,6 @@ COPY --from=gems /app /app
 COPY --from=gems /usr/lib/fullstaq-ruby/versions /usr/lib/fullstaq-ruby/versions
 COPY --from=gems /usr/local/bundle /usr/local/bundle
 
-# copy installed node modules
-COPY --from=node_modules /app/node_modules /app/node_modules
-
 #######################################################################
 
 # Deploy your application
@@ -115,6 +96,7 @@ COPY . .
 # Adjust binstubs to run on Linux and set current working directory
 RUN chmod +x /app/bin/* && \
     sed -i 's/ruby.exe\r*/ruby/' /app/bin/* && \
+    sed -i 's/ruby\r*/ruby/' /app/bin/* && \
     sed -i '/^#!/aDir.chdir File.expand_path("..", __dir__)' /app/bin/*
 
 # The following enable assets to precompile on the build server.  Adjust
