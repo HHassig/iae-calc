@@ -1,1 +1,247 @@
 // Specific CSS for your home-page
+.btn {
+  background-color: #99ccff !important;
+}
+img {
+  // height: 20em;
+  width: 40%;
+  margin: auto;
+  // object-fit: cover;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+p {
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+.card-trip-infos {
+  padding: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+.title {
+  text-align: center;
+  margin: auto;
+  margin-bottom: 1em;
+  width: auto;
+}
+.title h2 {
+  font-size: 2em;
+  font-weight: bold;
+}
+
+.card-trip-infos .card-trip-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
+.card-product {
+  // overflow: hidden;
+  height: auto;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  display: flex;
+  align-items: center;
+  text-align: left;
+  margin: auto;
+  margin-bottom: 1em;
+  width: 80%;
+  border-radius: 1em;
+}
+.radio-buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.form-check-label {
+  align-items: left;
+}
+.card-product .sticky {
+  position: sticky;
+  top: 0;
+}
+
+.card-product h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0 0 1em 0;
+}
+
+.card-product p {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+
+.card-product-infos {
+  width: 100%;
+}
+.card-product-full {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin-bottom: 1em;
+}
+.card-product-question {
+  // width: 70%;
+  margin-left: 0.5em;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+}
+.popper {
+  margin-left: 0.5em;
+}
+.popper i {
+  font-size: 12px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+}
+.card-product .card-product-infos {
+  padding: 1.5em;
+}
+.mb-3 {
+  margin-bottom: 0 !important;
+}
+.button-tooltip {
+  background: none;
+  border: none;
+}
+.switch-field {
+  border-radius: 1em;
+}
+.switch-field input {
+  position: absolute !important;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  width: 1px;
+  border: 0;
+  // overflow: hidden;
+  display: inline-block;
+}
+.switch-field label {
+  background-color: #e4e4e4;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: .75em;
+  // line-height: 1;
+  text-align: center;
+  padding: 0.75em 1.5em;
+  margin: 0;
+  // margin-right: -1px;
+  // border: 1px solid rgba(0, 0, 0, 0.2);
+  // box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px rgba(255, 255, 255, 0.1);
+  transition: all 0.1s ease-in-out;
+  display: inline-block;
+}
+.switch-field label:hover {
+  cursor: pointer;
+}
+.switch-field input:checked + label.yes {
+  background-color: #a5dc86;
+  box-shadow: none;
+}
+.switch-field input:checked + label.no {
+  background-color: #d99182;
+  box-shadow: none;
+}
+
+.live-results {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  text-align: center;
+  margin: auto;
+  padding: 1em;
+  background-color: #99ccff;
+  border-radius: 1em;
+}
+.live-result h3 {
+  font-size: 1.5em;
+  padding: 0;
+}
+.extra-infos {
+  width: 60%;
+  margin: auto;
+  text-align: center;
+  background-color: #f2f2f2;
+  border-radius: 1em;
+  padding: 1em;
+  margin-bottom: 1em;
+}
+.extra-info {
+  margin: 0.5em;
+  width: 75%;
+  background-color: white;
+}
+.survey_patient_id, .survey_iae_description, .survey_iae_management {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  // width: 25%;
+}
+#resbar {
+  width: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+
+}
+.sticky {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0em;
+  z-index: 2;
+}
+.sticky + .content {
+  padding-top: 60px;
+}
+.live-result p span {
+  font-weight: bold;
+}
+.optional {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.question-section {
+  width: 80%;
+  margin: auto;
+}
+.form-check {
+  padding-left: 0em !important;
+  margin-top: 0.5em;
+}
+.form-check-input {
+  margin-left: 0em !important;
+  margin-right: 1em;
+  // margin-top: 0.5em;
+}
+.form-label {
+  margin-top: 0.5em;
+}
+.submit-survey {
+  display: block;
+  width: 10em;
+  margin: auto;
+  margin-bottom: 2em;
+  text-align: center;
+}
