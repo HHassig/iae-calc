@@ -3,6 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="live-results-table"
 export default class extends Controller {
   connect() {
+    setBorderRadius(document.querySelectorAll(".relative"));
     const all_buttons = document.getElementsByClassName("form-check-input");
     for (var i = 0; i < all_buttons.length; i++) {
     all_buttons[i].addEventListener('click', function() {
@@ -12,12 +13,16 @@ export default class extends Controller {
       var classintra = "No record for Class Intra.";
       var suffixt = "N/A";
       var eaes = "1";
+
       var death = document.querySelector('input[name="survey[death]"]:checked').value;
       setColor("death", death);
+
       var life_threatening = document.querySelector('input[name="survey[life_threatening]"]:checked').value;
       setColor("life_threatening", life_threatening);
+
       var sig_consequences = document.querySelector('input[name="survey[sig_consequences]"]:checked').value;
       setColor("sig_consequences", sig_consequences);
+
       var incorrect_with_consent = document.querySelector('input[name="survey[incorrect_with_consent]"]:checked').value;
       setColor("incorrect_with_consent", incorrect_with_consent);
 
@@ -54,6 +59,7 @@ export default class extends Controller {
       var more_blood_units = document.querySelector('input[name="survey[more_blood_units]"]:checked').value;
       setColor("more_blood_units", more_blood_units);
 
+      //EAUIAIC
       if (death == "false" && intervention == "false" && life_threatening == "false" && sig_consequences == "false" && incorrect_with_consent == "false" && unanticipated_conversion == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false" && re_operation == "false") {
         //EAUIAIC
         eauiaic = "0";
@@ -179,13 +185,22 @@ export default class extends Controller {
       document.querySelector("#eaes-spot").innerHTML = eaes;
       }, false);
     }
+
     function setColor(elementName, value) {
       if (value === "true") {
         document.querySelector(`label[for="survey_${elementName}_true"`).style.backgroundColor = "#90ee90";
-        document.querySelector(`label[for="survey_${elementName}_false"`).style.backgroundColor = "#E4E4E4";
+        document.querySelector(`label[for="survey_${elementName}_false"`).style.backgroundColor = "#CBD5E1";
       } else {
-        document.querySelector(`label[for="survey_${elementName}_true"`).style.backgroundColor = "#E4E4E4";
+        document.querySelector(`label[for="survey_${elementName}_true"`).style.backgroundColor = "#CBD5E1";
         document.querySelector(`label[for="survey_${elementName}_false"`).style.backgroundColor = "#FF7F7F";
+      }
+    }
+
+    function setBorderRadius(questions) {
+      for (let i = 0; i < questions.length; i++) {
+        let a = questions[i].querySelectorAll("label");
+        a[0].style.borderRadius = "1em 0em 0em 1em";
+        a[1].style.borderRadius = "0em 1em 1em 0em";
       }
     }
   }

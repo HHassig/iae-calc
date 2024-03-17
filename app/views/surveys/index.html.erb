@@ -1,0 +1,43 @@
+<div class="title font-black">
+  <h2 class="iae-h2">Survey History</h2>
+  <%= link_to "<i class='fa-solid fa-backward mt-2 text-xl'></i>".html_safe, root_path, class: "text-black" %>
+</div>
+<div class="px-4 sm:px-6 lg:px-8">
+  <div class="mt-8 flow-root">
+    <div class="-mx-4 -my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+      <div class="inline-block min-w-full py-2 align-middle sm:px-6 lg:px-8">
+        <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 sm:rounded-lg">
+          <table class="min-w-full divide-y divide-gray-300">
+            <thead class="bg-gray-50">
+              <tr>
+                <th scope="col" class="text-center px-3 py-3.5 text-left text-sm font-semibold text-black">Survey ID</th>
+                <th scope="col" class="text-center py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-black">Patient ID</th>
+                <th scope="col" class="text-center px-3 py-3.5 text-left text-sm font-semibold text-black">EAUiaiC</th>
+                <th scope="col" class="text-center px-3 py-3.5 text-left text-sm font-semibold text-black">iAE Severity</th>
+                <th scope="col" class="text-center px-3 py-3.5 text-left text-sm font-semibold text-black">Modified Satava</th>
+                <th scope="col" class="text-center px-3 py-3.5 text-left text-sm font-semibold text-black">Class Intra</th>
+                <th scope="col" class="text-center px-3 py-3.5 text-left text-sm font-semibold text-black">EAES</th>
+                <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
+                  <span class="sr-only">Edit</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-200 bg-white">
+              <% @surveys.each do |survey| %>
+                <tr>
+                  <td class="text-center whitespace-nowrap py-4 pl-4 pr-3 text-sm font-bold text-black"><%= link_to survey.id, survey_path(survey) %></td>
+                  <td class="text-center whitespace-nowrap px-3 py-4 text-sm text-black"><%= survey.patient_id.nil? ? "N/A" : survey.patient_id %></td>
+                  <td class="text-center whitespace-nowrap px-3 py-4 text-sm text-black"><%= survey.eauiaic %></td>
+                  <td class="text-center whitespace-nowrap px-3 py-4 text-sm text-black"><%= survey.iae_severity %></td>
+                  <td class="text-center whitespace-nowrap px-3 py-4 text-sm text-black"><%= survey.modified_satava %></td>
+                  <td class="text-center whitespace-nowrap px-3 py-4 text-sm text-black"><%= survey.class_intra %></td>
+                  <td class="text-center whitespace-nowrap px-3 py-4 text-sm text-black"><%= survey.eaes %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

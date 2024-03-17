@@ -15,7 +15,7 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find(params[:id])
-    @survey = nil unless @survey.user == current_user.id
+    @survey = nil unless @survey.user == current_user
   end
 
   def new
@@ -24,7 +24,7 @@ class SurveysController < ApplicationController
 
   def create
     @survey = Survey.new(survey_params)
-    @survey.user = current_user.id
+    @survey.user = current_user
     @survey.patient_id = "N/A" if @survey.patient_id == ""
     @survey.iae_description = "Not provided." if @survey.iae_description == ""
     @survey.iae_management = "Not provided." if @survey.iae_management == ""

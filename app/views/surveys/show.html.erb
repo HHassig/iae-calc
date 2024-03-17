@@ -1,0 +1,275 @@
+<div class="bg-white card-trip pb-2">
+  <div class="card-trip-infos">
+    <div class="title font-black">
+      <h2 class="iae-h2">Entry #<%= @survey.id %></h2>
+      <h3 id="patient-id">Patient ID: <%= @survey.patient_id.nil? ? "N/A" : @survey.patient_id %></h3>
+      <%= link_to "<i class='fa-solid fa-backward mt-2 text-xl'></i>".html_safe, root_path, class: "text-black" %>
+    </div>
+  </div>
+  <div data-controller="live-results-table">
+    <div class="card-product sticky">
+      <div class="live-results bg-slate-300">
+        <div class="live-result">
+          <h3 class="text-m">EAUiaiC</h3>
+          <p class="iae-p">(0 - 5B)</p>
+          <p class="iae-p font-bold"><%= @survey.eauiaic %></p>
+        </div>
+        <div class="live-result">
+          <h3 class="text-m">iAE Severity</h3>
+          <p class="iae-p">(I - VI)</p>
+          <p class="iae-p font-bold"><%= @survey.iae_severity %><%= @survey.suffix_t %></span></p>
+        </div>
+        <div class="live-result">
+          <h3 class="text-m">Modified Satava</h3>
+          <p class="iae-p">(I - III)</p>
+          <p class="iae-p font-bold"><%= @survey.modified_satava %></p>
+        </div>
+        <div class="live-result">
+          <h3 class="text-m">Class Intra</h3>
+          <p class="iae-p">(0 - V)</p>
+          <p class="iae-p font-bold"><%= @survey.class_intra %></p>
+        </div>
+        <div class="live-result">
+          <h3 class="text-m">EAES</h3>
+          <p class="iae-p">(1- 5)</p>
+          <p class="iae-p font-bold"><%= @survey.eaes %></p>
+        </div>
+      </div>
+    </div>
+    <div class="extra-infos-show bg-slate-300">
+      <div class="note">
+        <h4 class="font-bold text-xl">iAE Description</h4>
+        <p><%= @survey.iae_description %></p>
+      </div>
+      <div class="note">
+        <h4 class="font-bold text-xl">iAE Management</h4>
+        <p><%= @survey.iae_management %></p>
+      </div>
+    </div>
+    <div>
+      <div class="question-section">
+        <ul role="list" class="divide-y divide-gray-100 bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl pt-4">
+          <h2 class="text-left mb-2 pl-4 text-black font-bold text-xl">Patient</h2>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Was the iAE associated with death of the patient?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.death) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Was the iAE immediately life-threatening?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.life_threatening) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Were there significant consequences to the patient as a result of the iAE?
+                <div class="hover-container">
+                  <i class="fa-solid fa-circle-info hover-target"></i>
+                  <aside class="hover-popup bg-slate-300">
+                    <p class="text-black">Some examples of iAEs with significant consequences includes injury to or unplanned removal of an otherwise healthy major organ (e.g. unplanned pulmonectomy, nephrectomy) and events that are exceedingly challenging to manage in a controlled manner without potential for long-term patient consequences (e.g. increased risk of postoperative multiorgan failure with major blood transfusion).</p>
+                  </aside>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.sig_consequences) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Was the incorrect site, side, or surgical approach used without consent?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.incorrect_with_consent) %>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="question-section">
+        <ul role="list" class="divide-y divide-gray-100 bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl pt-4">
+          <h2 class="text-left mb-2 pl-4 text-black font-bold text-xl">Procedure</h2>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Were there any changes in the ideal intraoperative course related to iAE?
+                <div class="hover-container">
+                  <i class="fa-solid fa-circle-info hover-target"></i>
+                  <aside class="hover-popup bg-slate-300">
+                    <p class="text-black">Changes in course include minor incidents such as unintended cauterization, equipment malfunction, unanticipated anesthesiologic challenges, or procedural delays regardless of consequence or management.</p>
+                  </aside>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.intraoperative_course_change) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">Unanticipated conversion of approach or significant change to operative steps of the originally planned procedure due to iAE?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.unanticipated_conversion) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Was planned procedure aborted or incomplete due to iAE?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.aborted_incomplete) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Unplanned stoma as a result of iAE?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.unplanned_stoma) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Unplanned tissue or organ removal as a result of iAE?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.unplanned_removal) %>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="question-section">
+        <ul role="list" class="divide-y divide-gray-100 bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl pt-4">
+          <h2 class="text-left mb-2 pl-4 text-black font-bold text-xl">iAE Management</h2>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Was any surgical repair, medical treatment, or other intervention required?
+                <div class="hover-container">
+                  <i class="fa-solid fa-circle-info hover-target"></i>
+                  <aside class="hover-popup bg-slate-300">
+                    <p class="text-black">Standard procedural management (e.g. cauterization, use of prothombotic material, small vessel ligation) does not qualify as "repair."</p>
+                  </aside>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.intervention) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Was there a change in post-operative care due to the iAE?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.post_op_care_change) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Did the iAE or its management necessitate intensive care admission?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.intensive_care) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Was the intraoperative injury missed, necessitating re-operation within 7 days of index procedure?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.re_operation) %>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="question-section">
+        <ul role="list" class="divide-y divide-gray-100 bg-white shadow-sm ring-1 ring-gray-900/5 sm:rounded-xl pt-4">
+          <h2 class="text-left mb-2 pl-4 text-black font-bold text-xl">Bleeding Related</h2>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Was blood loss appreciably over normal range for procedure?
+                <div class="hover-container">
+                  <i class="fa-solid fa-circle-info hover-target"></i>
+                  <aside class="hover-popup bg-slate-300">
+                    <p class="text-black">Per Kazaryan, et al. (2013): "A normal range of blood loss for each particular procedure is subjective in a certain degree, but one can quantify it in regard to different procedures based both on contemporary scientific literature and values typical for own institution"</p>
+                  </aside>
+                </div>
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.blood_loss_high) %>
+              </div>
+            </div>
+          </li>
+          <li class="relative flex justify-between gap-x-6 px-4 py-2 sm:px-6">
+            <div class="flex gap-x-4">
+              <div class="flex items-center gap-x-4 pt-2 pb-2">
+                Were 2 or more units of blood products required to manage iAE?
+              </div>
+            </div>
+            <div class="flex items-center gap-x-4 pt-2 pb-2">
+              <div class="switch-field font-bold" name="switch-field font-bold">
+                <%= @survey.yes_or_no(@survey.more_blood_units) %>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
