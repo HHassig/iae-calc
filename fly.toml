@@ -1,10 +1,10 @@
-# fly.toml app configuration file generated for iae-calc on 2024-03-11T09:34:15+01:00
+# fly.toml app configuration file generated for iae-calc on 2024-03-17T15:39:28-07:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
 app = 'iae-calc'
-primary_region = 'bos'
+primary_region = 'lax'
 console_command = '/rails/bin/rails console'
 
 [build]
@@ -19,7 +19,3 @@ console_command = '/rails/bin/rails console'
 
 [[vm]]
   size = 'shared-cpu-1x'
-
-[[statics]]
-  guest_path = '/rails/public'
-  url_prefix = '/'
