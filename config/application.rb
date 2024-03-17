@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module IaeCalc
   class Application < Rails::Application
+    config.assets.css_compressor = nil
     config.generators do |generate|
       generate.assets false
       generate.helper false
