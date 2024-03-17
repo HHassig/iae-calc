@@ -14,8 +14,7 @@ class SurveysController < ApplicationController
   end
 
   def show
-    @survey = Survey.find(params[:id])
-    @survey = nil unless @survey.user == current_user
+    @survey = validate_survey(params[:id])
   end
 
   def new
@@ -39,13 +38,14 @@ class SurveysController < ApplicationController
   private
 
   def update_survey(survey)
-    survey.eauiaic = survey.get_eauiaic(survey)
-    survey.iae_severity = survey.get_iae_severity(survey)
-    survey.modified_satava = survey.get_modified_satava(survey)
-    survey.class_intra = survey.get_class_intra(survey)
-    survey.suffix_t = survey.get_suffix_t(survey)
-    survey.eaes = survey.get_eaes(survey)
-    survey.save!
+    survey.update!(
+      eauiaic: survey.get_eauiaic(survey),
+      iae_severity: survey.get_iae_severity(survey),
+      modified_satava: survey.get_modified_satava(survey),
+      class_intra: survey.get_class_intra(survey),
+      suffix_t: survey.get_suffix_t(survey),
+      eaes: survey.get_eaes(survey)
+    )
   end
 
   def survey_params
@@ -60,5 +60,10 @@ class SurveysController < ApplicationController
       csv << columns.map(&:humanize)
       surveys.each { |survey| csv << survey.attributes.values_at(*columns) }
     end
+  end
+
+  def validate_survey(id)
+    survey = Survey.find(id)
+    survey.user == current_user ? survey : nil
   end
 end
