@@ -83,3 +83,5 @@ group :test do
 end
 
 gem "dockerfile-rails", ">= 1.6", :group => :development
+
+gem "redis", "~> 5.1"
