@@ -23,11 +23,7 @@ class SurveysController < ApplicationController
 
   def create
     @survey = update_survey(Survey.new(survey_params))
-    if @survey.save!
-      redirect_to survey_path(@survey), notice: "Saved."
-    else
-      render :new, status: :unprocessable_entity
-    end
+    @survey.save! ? (redirect_to survey_path(@survey), notice: "Saved.") : (render :new, status: :unprocessable_entity)
   end
 
   private
