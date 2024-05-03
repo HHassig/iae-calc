@@ -3,7 +3,8 @@
     <div class="title font-black">
       <h1 class="iae-h2">Entry #<%= @survey.id %></h1>
       <h3 id="patient-id">Patient ID: <%= @survey.patient_id.nil? ? "N/A" : @survey.patient_id %></h3>
-      <%= link_to "<i class='fa-solid fa-backward mt-2 text-xl'></i>".html_safe, root_path, class: "text-black" %>
+      <%= link_to "<i class='fa-solid fa-house mt-2 text-xl'></i>".html_safe, root_path, class: "mr-2 text-black" %>
+      <%= link_to "<i class='fa-solid fa-list mt-2 text-xl'></i>".html_safe, surveys_path, class: "ml-2 text-black" %>
     </div>
   </div>
   <div data-controller="live-results-table">
