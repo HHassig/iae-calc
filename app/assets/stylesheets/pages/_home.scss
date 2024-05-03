@@ -236,12 +236,7 @@ p {
   border-radius: 1em;
   background-color: #CBD5E1;
 }
-.live-result h3 {
-  font-size: 1.5em;
-  padding: 0;
-}
 .extra-infos {
-  width: 60%;
   margin: auto;
   text-align: center;
   background-color: #CBD5E1;
@@ -287,6 +282,9 @@ p {
 .question-section {
   width: 80%;
   margin: auto;
+}
+.question-section ul {
+  padding-left: 0em !important;
 }
 .form-check {
   padding-left: 0em !important;

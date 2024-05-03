@@ -2,7 +2,7 @@ class SurveysController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
 
   def index
-    @surveys = Survey.where(user: current_user)
+    @surveys = Survey.where(user_id: current_user.id)
     respond_to do |format|
       format.html
       format.csv { send_data as_csv(@surveys) }
@@ -22,13 +22,8 @@ class SurveysController < ApplicationController
   end
 
   def create
-    @survey = Survey.new(survey_params)
-    @survey.user = current_user
-    @survey.patient_id = "N/A" if @survey.patient_id == ""
-    @survey.iae_description = "Not provided." if @survey.iae_description == ""
-    @survey.iae_management = "Not provided." if @survey.iae_management == ""
-    if @survey.save
-      update_survey(@survey)
+    @survey = update_survey(Survey.new(survey_params))
+    if @survey.save!
       redirect_to survey_path(@survey), notice: "Saved."
     else
       render :new, status: :unprocessable_entity
@@ -38,14 +33,11 @@ class SurveysController < ApplicationController
   private
 
   def update_survey(survey)
-    survey.update!(
-      eauiaic: survey.get_eauiaic(survey),
-      iae_severity: survey.get_iae_severity(survey),
-      modified_satava: survey.get_modified_satava(survey),
-      class_intra: survey.get_class_intra(survey),
-      suffix_t: survey.get_suffix_t(survey),
-      eaes: survey.get_eaes(survey)
-    )
+    survey.user_id = current_user.id
+    survey.patient_id = "N/A" if survey.patient_id == ""
+    survey.iae_description = "Not provided." if survey.iae_description == ""
+    survey.iae_management = "Not provided." if survey.iae_management == ""
+    survey
   end
 
   def survey_params
@@ -64,6 +56,6 @@ class SurveysController < ApplicationController
 
   def validate_survey(id)
     survey = Survey.find(id)
-    survey.user == current_user ? survey : nil
+    survey.user_id == current_user.id ? survey : nil
   end
 end

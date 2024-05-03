@@ -7,183 +7,57 @@ export default class extends Controller {
     const all_buttons = document.getElementsByClassName("form-check-input");
     for (var i = 0; i < all_buttons.length; i++) {
     all_buttons[i].addEventListener('click', function() {
-      var eauiaic = "No record for EAUIAIC.";
-      var iaeseverity = "No record for iAE Severity.";
-      var modifiedsatava = "No record for Modified Satava.";
-      var classintra = "No record for Class Intra.";
-      var suffixt = "N/A";
-      var eaes = "1";
-
-      var death = document.querySelector('input[name="survey[death]"]:checked').value;
-      setColor("death", death);
-
-      var life_threatening = document.querySelector('input[name="survey[life_threatening]"]:checked').value;
-      setColor("life_threatening", life_threatening);
-
-      var sig_consequences = document.querySelector('input[name="survey[sig_consequences]"]:checked').value;
-      setColor("sig_consequences", sig_consequences);
-
-      var incorrect_with_consent = document.querySelector('input[name="survey[incorrect_with_consent]"]:checked').value;
-      setColor("incorrect_with_consent", incorrect_with_consent);
-
-      var intraoperative_course_change = document.querySelector('input[name="survey[intraoperative_course_change]"]:checked').value;
-      setColor("intraoperative_course_change", intraoperative_course_change);
-
-      var unanticipated_conversion = document.querySelector('input[name="survey[unanticipated_conversion]"]:checked').value;
-      setColor("unanticipated_conversion", unanticipated_conversion);
-
-      var aborted_incomplete = document.querySelector('input[name="survey[aborted_incomplete]"]:checked').value;
-      setColor("aborted_incomplete", aborted_incomplete);
-
-      var unplanned_stoma = document.querySelector('input[name="survey[unplanned_stoma]"]:checked').value;
-      setColor("unplanned_stoma", unplanned_stoma);
-
-      var unplanned_removal = document.querySelector('input[name="survey[unplanned_removal]"]:checked').value;
-      setColor("unplanned_removal", unplanned_removal);
-
-      var intervention = document.querySelector('input[name="survey[intervention]"]:checked').value;
-      setColor("intervention", intervention);
-
-      var post_op_care_change = document.querySelector('input[name="survey[post_op_care_change]"]:checked').value;
-      setColor("post_op_care_change", post_op_care_change);
-
-      var intensive_care = document.querySelector('input[name="survey[intensive_care]"]:checked').value;
-      setColor("intensive_care", intensive_care);
-
-      var re_operation = document.querySelector('input[name="survey[re_operation]"]:checked').value;
-      setColor("re_operation", re_operation);
-
-      var blood_loss_high = document.querySelector('input[name="survey[blood_loss_high]"]:checked').value;
-      setColor("blood_loss_high", blood_loss_high);
-
-      var more_blood_units = document.querySelector('input[name="survey[more_blood_units]"]:checked').value;
-      setColor("more_blood_units", more_blood_units);
-
-      //EAUIAIC
-      if (death == "false" && intervention == "false" && life_threatening == "false" && sig_consequences == "false" && incorrect_with_consent == "false" && unanticipated_conversion == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false" && re_operation == "false") {
-        //EAUIAIC
-        eauiaic = "0";
-      }
-      if ((intervention == "true" || more_blood_units == "true") && death == "false" && life_threatening == "false" && sig_consequences == "false" && incorrect_with_consent == "false" && unanticipated_conversion == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false" && re_operation == "false") {
-        //EAUIAIC
-        eauiaic = "1";
-      }
-      if ((unanticipated_conversion == "false" || sig_consequences == "true" || re_operation == "true") && death == "false" && life_threatening == "false" && incorrect_with_consent == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false" ) {
-        //EAUIAIC
-        eauiaic = "2";
-      }
-      if (death == "false" && life_threatening == "true" && incorrect_with_consent == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false") {
-        //EAUIAIC
-        eauiaic = "3";
-      }
-      if (death == "false" && incorrect_with_consent == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "true") {
-        //EAUIAIC
-        eauiaic = "4A";
-      }
-      if ((aborted_incomplete == "true" || unplanned_stoma == "true" ) && death == "false" && incorrect_with_consent == "false") {
-        //EAUIAIC
-        eauiaic = "4B";
-      }
-      if (death == "false" && incorrect_with_consent == "true") {
-        //EAUIAIC
-        eauiaic = "5A";
-      }
-      if (death == "true") {
-        //EAUIAIC
-        eauiaic = "5B";
-      }
-
-      //iAE severity//iAE severity//iAE severity//iAE severity//iAE severity//iAE severity//iAE severity
-      if (death == "false" && intervention == "false" && incorrect_with_consent == "false" && unanticipated_conversion == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false" && re_operation == "false") {
-        //iAE severity
-        iaeseverity = "I";
-      }
-      if (death == "false" && intervention == "true" && unanticipated_conversion == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false" && re_operation == "false") {
-        //iAE severity
-        iaeseverity = "II";
-      }
-      if (death == "false" && unanticipated_conversion == "false" && aborted_incomplete == "false" && unplanned_removal == "true" && re_operation == "false") {
-        //iAE severity
-        iaeseverity = "III";
-      }
-      if (death == "false" && (unanticipated_conversion == "true" || aborted_incomplete == "true" || unplanned_stoma == "true" || incorrect_with_consent == "true") && re_operation == "false") {
-        //iAE severity
-        iaeseverity = "IV";
-      }
-      if (death == "false" && re_operation == "true") {
-        //iAE severity
-        iaeseverity = "V";
-      }
-      if (death == "true") {
-        //iAE severity
-        iaeseverity = "VI";
-      }
-
-      if (more_blood_units == "true") {
-        //iAE severity
-        suffixt = " T";
-      }
-      if (more_blood_units == "false") {
-        //iAE severity
-        suffixt = "";
-      }
-
-      //ModifiedSatava//ModifiedSatava//ModifiedSatava//ModifiedSatava//ModifiedSatava//ModifiedSatava//ModifiedSatava//ModifiedSatava//ModifiedSatava//ModifiedSatava
-      if (death == "false" && life_threatening == "false" && sig_consequences == "false" && unanticipated_conversion == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false" && re_operation == "false" && blood_loss_high == "false") {
-        //ModifiedSatava
-        modifiedsatava = "I";
-      }
-      if ((unanticipated_conversion == "false" || unplanned_stoma == "true" || unplanned_removal == "true" || blood_loss_high == "true" || aborted_incomplete == "true") && death == "false" && life_threatening == "false" && sig_consequences == "false" ) {
-        //ModifiedSatava
-        modifiedsatava = "II";
-      }
-      if (death == "true" || life_threatening == "true" || sig_consequences == "true" || re_operation == "true") {
-        //ModifiedSatava
-        modifiedsatava = "III";
-      }
-
-      //ClassIntra//ClassIntra//ClassIntra//ClassIntra//ClassIntra//ClassIntra//ClassIntra
-      if (death == "false" && life_threatening == "false" && sig_consequences == "false" && incorrect_with_consent == "false" && unanticipated_conversion == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false" && intervention == "false" && re_operation == "false" && blood_loss_high == "false") {
-        //ClassIntra
-        classintra = "0"
-      }
-      if ((intraoperative_course_change == "true" || blood_loss_high == "true") && death == "false" && life_threatening == "false" && sig_consequences == "false" && unanticipated_conversion == "false" && aborted_incomplete == "false" && unplanned_stoma == "false" && unplanned_removal == "false" && intervention == "false" && re_operation == "false") {
-        //ClassIntra
-        classintra = "I"
-      }
-      if ((intervention == "true" || aborted_incomplete == "true" || more_blood_units == "true" || re_operation == "true" || incorrect_with_consent == "true") && death == "false" && life_threatening == "false" && sig_consequences == "false" && unanticipated_conversion == "false" && unplanned_stoma == "false" && unplanned_removal == "false" ) {
-        //ClassIntra
-        classintra = "II";
-      }
-      if ((life_threatening == "true" || sig_consequences == "true" || unplanned_stoma == "true" || unanticipated_conversion == "false" || unplanned_removal == "true") && death == "false" ) {
-        //ClassIntra
-        classintra = "III"
-      }
-      if (death == "true") {
-        //ClassIntra
-        classintra = "IV";
-      }
-
-      //EAES//EAES//EAES//EAES//EAES//EAES//EAES//EAES//EAES//EAES
-      if (intervention == "true" && post_op_care_change == "false") {
-        eaes = "2";
-      }
-      if (post_op_care_change == "true" || intraoperative_course_change == "true") {
-        eaes = "3";
-      }
-      if (life_threatening == "true" || sig_consequences == "true" || re_operation == "true" || intensive_care == "true") {
-        eaes = "4";
-      }
-      if (death == "true") {
-        eaes = "5";
-      }
-      document.querySelector("#eauiaic-spot").innerHTML = eauiaic;
-      document.querySelector("#iaeseverity-spot").innerHTML = iaeseverity;
-      document.querySelector("#modifiedsatava-spot").innerHTML = modifiedsatava;
-      document.querySelector("#classintra-spot").innerHTML = classintra;
-      document.querySelector("#suffixt-spot").innerHTML = suffixt;
-      document.querySelector("#eaes-spot").innerHTML = eaes;
+      var questions = {}
+      questions.death = document.querySelector('input[name="survey[death]"]:checked').value;
+      questions.life_threatening = document.querySelector('input[name="survey[life_threatening]"]:checked').value;
+      questions.sig_consequences = document.querySelector('input[name="survey[sig_consequences]"]:checked').value;
+      questions.incorrect_with_consent = document.querySelector('input[name="survey[incorrect_with_consent]"]:checked').value;
+      questions.intraoperative_course_change = document.querySelector('input[name="survey[intraoperative_course_change]"]:checked').value;
+      questions.unanticipated_conversion = document.querySelector('input[name="survey[unanticipated_conversion]"]:checked').value;
+      questions.aborted_incomplete = document.querySelector('input[name="survey[aborted_incomplete]"]:checked').value;
+      questions.unplanned_stoma = document.querySelector('input[name="survey[unplanned_stoma]"]:checked').value;
+      questions.unplanned_removal = document.querySelector('input[name="survey[unplanned_removal]"]:checked').value;
+      questions.intervention = document.querySelector('input[name="survey[intervention]"]:checked').value;
+      questions.post_op_care_change = document.querySelector('input[name="survey[post_op_care_change]"]:checked').value;
+      questions.intensive_care = document.querySelector('input[name="survey[intensive_care]"]:checked').value;
+      questions.re_operation = document.querySelector('input[name="survey[re_operation]"]:checked').value;
+      questions.blood_loss_high = document.querySelector('input[name="survey[blood_loss_high]"]:checked').value;
+      questions.more_blood_units = document.querySelector('input[name="survey[more_blood_units]"]:checked').value;
+      setColors(questions);
+      setResults(getValues(questions));
       }, false);
+    }
+
+    function setResults(results) {
+      document.querySelector("#eauiaic-spot").innerHTML = results.eauiaic;
+      document.querySelector("#iaeseverity-spot").innerHTML = results.iaeseverity;
+      document.querySelector("#modifiedsatava-spot").innerHTML = results.modifiedsatava;
+      document.querySelector("#classintra-spot").innerHTML = results.classintra;
+      document.querySelector("#suffixt-spot").innerHTML = results.suffixt;
+      document.querySelector("#eaes-spot").innerHTML = results.eaes;
+      document.querySelector("#survey_eauiaic").innerHTML = results.eauiaic;
+      document.querySelector("#survey_iae_severity").innerHTML = results.iaeseverity;
+      document.querySelector("#survey_modified_satava").innerHTML = results.modifiedsatava;
+      document.querySelector("#survey_class_intra").innerHTML = results.classintra;
+      document.querySelector("#survey_suffix_t").innerHTML = results.suffixt;
+      document.querySelector("#survey_eaes").innerHTML = results.eaes;
+    }
+
+    function getValues(questions) {
+      var results = {}
+      results.eauiaic = getEauiaic(questions);
+      results.iaeseverity = getIaeseverity(questions);
+      results.suffixt = getSuffixT(questions);
+      results.modifiedsatava = getModifiedSatava(questions);
+      results.classintra = getClassIntra(questions);
+      results.eaes = getEaes(questions);
+      return results;
+    }
+
+    function setColors(questions) {
+      Object.keys(questions).forEach(function (key) {
+        setColor(key, questions[key]);
+      })
     }
 
     function setColor(elementName, value) {
@@ -202,6 +76,120 @@ export default class extends Controller {
         a[0].style.borderRadius = "1em 0em 0em 1em";
         a[1].style.borderRadius = "0em 1em 1em 0em";
       }
+    }
+
+    function getEauiaic(questions) {
+      var eauiaic = "No record for EAUIAIC.";
+      if (questions.death == "false" && questions.intervention == "false" && questions.life_threatening == "false" && questions.sig_consequences == "false" && questions.incorrect_with_consent == "false" && questions.unanticipated_conversion == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false" && questions.re_operation == "false") {
+        eauiaic = "0";
+      }
+      if ((questions.intervention == "true" || questions.more_blood_units == "true") && questions.death == "false" && questions.life_threatening == "false" && questions.sig_consequences == "false" && questions.incorrect_with_consent == "false" && questions.unanticipated_conversion == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false" && questions.re_operation == "false") {
+        eauiaic = "1";
+      }
+      if ((questions.unanticipated_conversion == "false" || questions.sig_consequences == "true" || questions.re_operation == "true") && questions.death == "false" && questions.life_threatening == "false" && questions.incorrect_with_consent == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false" ) {
+        eauiaic = "2";
+      }
+      if (questions.death == "false" && questions.life_threatening == "true" && questions.incorrect_with_consent == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false") {
+        eauiaic = "3";
+      }
+      if (questions.death == "false" && questions.incorrect_with_consent == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "true") {
+        eauiaic = "4A";
+      }
+      if ((questions.aborted_incomplete == "true" || questions.unplanned_stoma == "true" ) && questions.death == "false" && questions.incorrect_with_consent == "false") {
+        eauiaic = "4B";
+      }
+      if (questions.death == "false" && questions.incorrect_with_consent == "true") {
+        eauiaic = "5A";
+      }
+      if (questions.death == "true") {
+        eauiaic = "5B";
+      }
+      return eauiaic;
+    }
+
+    function getIaeseverity(questions) {
+      var iaeseverity = "No record for iAE Severity.";
+      if (questions.death == "false" && questions.intervention == "false" && questions.incorrect_with_consent == "false" && questions.unanticipated_conversion == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false" && questions.re_operation == "false") {
+        iaeseverity = "I";
+      }
+      if (questions.death == "false" && questions.intervention == "true" && questions.unanticipated_conversion == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false" && questions.re_operation == "false") {
+        iaeseverity = "II";
+      }
+      if (questions.death == "false" && questions.unanticipated_conversion == "false" && questions.aborted_incomplete == "false" && questions.unplanned_removal == "true" && questions.re_operation == "false") {
+        iaeseverity = "III";
+      }
+      if (questions.death == "false" && (questions.unanticipated_conversion == "true" || questions.aborted_incomplete == "true" || questions.unplanned_stoma == "true" || questions.incorrect_with_consent == "true") && questions.re_operation == "false") {
+        iaeseverity = "IV";
+      }
+      if (questions.death == "false" && questions.re_operation == "true") {
+        iaeseverity = "V";
+      }
+      if (questions.death == "true") {
+        iaeseverity = "VI";
+      }
+      return iaeseverity;
+    }
+
+    function getSuffixT(questions) {
+      var suffixt = "N/A";
+      if (questions.more_blood_units == "true") {
+        suffixt = " T";
+      }
+      if (questions.more_blood_units == "false") {
+        suffixt = "";
+      }
+      return suffixt;
+    }
+
+    function getModifiedSatava(questions) {
+      var modifiedsatava = "No record for Modified Satava.";
+      if (questions.death == "false" && questions.life_threatening == "false" && questions.sig_consequences == "false" && questions.unanticipated_conversion == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false" && questions.re_operation == "false" && questions.blood_loss_high == "false") {
+        modifiedsatava = "I";
+      }
+      if ((questions.unanticipated_conversion == "false" || questions.unplanned_stoma == "true" || questions.unplanned_removal == "true" || questions.blood_loss_high == "true" || questions.aborted_incomplete == "true") && questions.death == "false" && questions.life_threatening == "false" && questions.sig_consequences == "false" ) {
+        modifiedsatava = "II";
+      }
+      if (questions.death == "true" || questions.life_threatening == "true" || questions.sig_consequences == "true" || questions.re_operation == "true") {
+        modifiedsatava = "III";
+      }
+      return modifiedsatava;
+    }
+
+    function getClassIntra(questions) {
+      var classintra = "No record for Class Intra.";
+      if (questions.death == "false" && questions.life_threatening == "false" && questions.sig_consequences == "false" && questions.incorrect_with_consent == "false" && questions.unanticipated_conversion == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false" && questions.intervention == "false" && questions.re_operation == "false" && questions.blood_loss_high == "false") {
+        classintra = "0"
+      }
+      if ((questions.intraoperative_course_change == "true" || questions.blood_loss_high == "true") && questions.death == "false" && questions.life_threatening == "false" && questions.sig_consequences == "false" && questions.unanticipated_conversion == "false" && questions.aborted_incomplete == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false" && questions.intervention == "false" && questions.re_operation == "false") {
+        classintra = "I"
+      }
+      if ((questions.intervention == "true" || questions.aborted_incomplete == "true" || questions.more_blood_units == "true" || questions.re_operation == "true" || questions.incorrect_with_consent == "true") && questions.death == "false" && questions.life_threatening == "false" && questions.sig_consequences == "false" && questions.unanticipated_conversion == "false" && questions.unplanned_stoma == "false" && questions.unplanned_removal == "false" ) {
+        classintra = "II";
+      }
+      if ((questions.life_threatening == "true" || questions.sig_consequences == "true" || questions.unplanned_stoma == "true" || questions.unanticipated_conversion == "false" || questions.unplanned_removal == "true") && questions.death == "false" ) {
+        classintra = "III"
+      }
+      if (questions.death == "true") {
+        classintra = "IV";
+      }
+      return classintra;
+    }
+
+    function getEaes(questions) {
+      var eaes = "1";
+      if (questions.intervention == "true" && questions.post_op_care_change == "false") {
+        eaes = "2";
+      }
+      if (questions.post_op_care_change == "true" || questions.intraoperative_course_change == "true") {
+        eaes = "3";
+      }
+      if (questions.life_threatening == "true" || questions.sig_consequences == "true" || questions.re_operation == "true" || questions.intensive_care == "true") {
+        eaes = "4";
+      }
+      if (questions.death == "true") {
+        eaes = "5";
+      }
+      return eaes;
     }
   }
 }
