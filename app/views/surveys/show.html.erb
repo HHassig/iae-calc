@@ -1,7 +1,7 @@
 <div class="bg-white card-trip pb-2">
   <div class="card-trip-infos">
     <div class="title font-black">
-      <h2 class="iae-h2">Entry #<%= @survey.id %></h2>
+      <h1 class="iae-h2">Entry #<%= @survey.id %></h1>
       <h3 id="patient-id">Patient ID: <%= @survey.patient_id.nil? ? "N/A" : @survey.patient_id %></h3>
       <%= link_to "<i class='fa-solid fa-backward mt-2 text-xl'></i>".html_safe, root_path, class: "text-black" %>
     </div>
