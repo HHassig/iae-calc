@@ -20,6 +20,7 @@ gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "simple_form-tailwind"
 gem "sassc-rails"
+gem "thruster"
 
 group :development, :test do
   gem "dotenv-rails"
