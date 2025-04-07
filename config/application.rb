@@ -8,6 +8,7 @@ Bundler.require(*Rails.groups)
 
 module IaeCalc
   class Application < Rails::Application
+    config.secret_key_base = "a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6" # 32 chars, 16 bytes
     config.assets.css_compressor = nil
     config.generators do |generate|
       generate.assets false
