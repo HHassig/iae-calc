@@ -1,0 +1,54 @@
+service: iae-calc
+image: hhassig/iae-calc
+servers:
+  web:
+    hosts:
+      - 5.78.120.19
+    env:
+      DB_HOST: 5.78.120.19
+proxy:
+  ssl: true
+  host: iae-calc.hassig.com
+registry:
+  username: hhassig
+  password:
+    - KAMAL_REGISTRY_PASSWORD
+env:
+  secret:
+    - RAILS_MASTER_KEY
+    - POSTGRES_PASSWORD
+    - IAE_CALC_DATABASE_PASSWORD
+    - RAILS_MASTER_KEY
+    - KAMAL_REGISTRY_PASSWORD
+    - DB_PASSWORD
+    - IAE_CALC_DATABASE_PASSWORD
+    - DB_HOST
+    - POSTGRES_USER
+    - POSTGRES_DB
+    - POSTGRES_PORT
+    - POSTGRES_PASSWORD
+    - RAILS_MAX_THREADS
+  clear:
+    SOLID_QUEUE_IN_PUMA: true
+    DB_HOST: 5.78.120.19
+aliases:
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
+volumes:
+  - "iae_calc_storage:/rails/storage"
+asset_path: /rails/public/assets
+builder:
+  arch: amd64
+accessories:
+  db:
+    image: postgres:16
+    host: 5.78.120.19
+    port: 5439:5432
+    env:
+      POSTGRES_USER: iae_calc
+      POSTGRES_DB: iae_calc_production
+    volumes:
+      - /root/iae_calc-db/data:/var/lib/postgresql/data
+      - /root/iae_calc-db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d

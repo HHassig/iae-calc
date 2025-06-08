@@ -4,7 +4,7 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   host: <%= ENV.fetch("DB_HOST") { "localhost" } %>
   port: <%= ENV.fetch("DB_PORT") { 5432 } %>
-  username: <%= ENV.fetch("DB_USERNAME") { "postgres" } %>
+  username: <%= ENV.fetch("DB_USERNAME") { "iae_calc" } %>
   password: <%= ENV.fetch("DB_PASSWORD") { nil } %>
 development:
   <<: *default
@@ -17,7 +17,7 @@ production:
     <<: *default
     database: iae_calc_production
     username: <%= ENV.fetch("DB_USERNAME") { "iae_calc" } %>
-    password: <%= ENV["IAE_CALC_DATABASE_PASSWORD"] %>
+    password: <%= ENV.fetch("IAE_CALC_DATABASE_PASSWORD") { nil } %>
     host: <%= ENV.fetch("DB_HOST") { "iae_calc-db" } %>
   cache:
     <<: *primary_production
@@ -31,32 +31,3 @@ production:
     <<: *primary_production
     database: iae_calc_production_cable
     migrations_paths: db/cable_migrate
-#################
-# default: &default
-#   adapter: postgresql
-#   encoding: unicode
-#   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-# development:
-#   <<: *default
-#   database: iae_calc_development
-# test:
-#   <<: *default
-#   database: iae_calc_test
-# production:
-#   primary: &primary_production
-#     <<: *default
-#     database: iae_calc_production
-#     username: iae_calc
-#     password: <%= ENV["IAE_CALC_DATABASE_PASSWORD"] %>
-#   cache:
-#     <<: *primary_production
-#     database: iae_calc_production_cache
-#     migrations_paths: db/cache_migrate
-#   queue:
-#     <<: *primary_production
-#     database: iae_calc_production_queue
-#     migrations_paths: db/queue_migrate
-#   cable:
-#     <<: *primary_production
-#     database: iae_calc_production_cable
-#     migrations_paths: db/cable_migrate

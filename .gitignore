@@ -39,4 +39,3 @@
 *.swp
 .DS_Store
 .kamal/secrets
-config/deploy.yml
