@@ -24,7 +24,7 @@ env:
     SOLID_QUEUE_IN_PUMA: true
     POSTGRES_USER: iae_calc
     POSTGRES_DB: iae_calc_production
-    POSTGRES_HOST: iae_calc_production
+    POSTGRES_HOST: iae_calc-db
     POSTGRES_PORT: 5432
 aliases:
   console: app exec --interactive --reuse "bin/rails console"
