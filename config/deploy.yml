@@ -5,7 +5,7 @@ servers:
     hosts:
       - 5.78.45.115
     env:
-      DB_HOST: 172.18.0.5
+      DB_HOST: iae_calc_production
       SOLID_QUEUE_IN_PUMA: "true"
 proxy:
   ssl: true
@@ -24,7 +24,7 @@ env:
     SOLID_QUEUE_IN_PUMA: true
     POSTGRES_USER: iae_calc
     POSTGRES_DB: iae_calc_production
-    POSTGRES_HOST: 172.18.0.5
+    POSTGRES_HOST: iae_calc_production
     POSTGRES_PORT: 5432
 aliases:
   console: app exec --interactive --reuse "bin/rails console"
