@@ -9,7 +9,7 @@ servers:
      SOLID_QUEUE_IN_PUMA: "true"
 proxy:
  ssl: true
- host: iae.hassig.com
+ host: iae-calc.hassig.com
 registry:
  username: hhassig
  password:
