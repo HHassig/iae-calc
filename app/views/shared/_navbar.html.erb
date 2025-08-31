@@ -6,11 +6,11 @@
     <% end %>
     <div class="lg:flex lg:gap-x-12">
       <% if user_signed_in? %>
-        <%= link_to "History", surveys_path, class: "text-sm font-semibold leading-6 text-black" %>
-        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-sm font-semibold leading-6 text-black ml:4 md: ml-2" %>
+        <%= link_to "History", surveys_path, class: "text-sm font-semibold leading-6 text-black no-underline" %>
+        <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-sm font-semibold leading-6 text-black ml:4 md: ml-2 no-underline" %>
       <% else %>
-        <%= link_to "Sign in", new_user_session_path, class: "text-sm font-semibold leading-6 text-black" %>
-        <%= link_to "Sign up", new_user_registration_path, class: "text-sm font-semibold leading-6 text-black ml-4 md: ml-2" %>
+        <%= link_to "Sign in", new_user_session_path, class: "text-sm font-semibold leading-6 text-black no-underline" %>
+        <%= link_to "Sign up", new_user_registration_path, class: "text-sm font-semibold leading-6 text-black ml-4 md: ml-2 no-underline" %>
       <% end %>
     </div>
   </nav>
