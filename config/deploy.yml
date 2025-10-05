@@ -2,11 +2,14 @@ service: iae_calc
 image: hhassig/iae_calc
 servers:
  web:
-   hosts:
-     - 5.78.45.115
-   env:
-     DB_HOST: iae_calc-db
-     SOLID_QUEUE_IN_PUMA: "true"
+    hosts:
+      - 100.90.13.19
+    options:
+      publish:
+        - "8086:80"
+    env:
+      DB_HOST: iae_calc-db
+      SOLID_QUEUE_IN_PUMA: "true"
 proxy:
  ssl: true
  host: iae-calc.hassig.com
@@ -37,7 +40,7 @@ builder:
 accessories:
  db:
    image: postgres:16
-   host: 5.78.45.115
+   host: 100.90.13.19
    port: 5437:5432
    env:
      POSTGRES_USER: iae_calc
