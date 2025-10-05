@@ -6,19 +6,23 @@ default: &default
   port: <%= ENV.fetch("DB_PORT") { 5432 } %>
   username: <%= ENV.fetch("DB_USERNAME") { "iae_calc" } %>
   password: <%= ENV.fetch("DB_PASSWORD") { nil } %>
+
 development:
   <<: *default
   database: iae_calc_development
+
 test:
   <<: *default
   database: iae_calc_test
+
 production:
   primary: &primary_production
     <<: *default
     database: iae_calc_production
     username: <%= ENV.fetch("DB_USERNAME") { "iae_calc" } %>
-    password: <%= ENV.fetch("IAE_CALC_DATABASE_PASSWORD") { nil } %>
-    host: <%= ENV.fetch("DB_HOST") { "iae_calc-db" } %>
+    password: <%= ENV.fetch("IAE_CALC_DATABASE_PASSWORD") %>
+    host: <%= ENV.fetch("DB_HOST") %>
+    port: <%= ENV.fetch("DB_PORT") { 5432 } %>
   cache:
     <<: *primary_production
     database: iae_calc_production_cache
