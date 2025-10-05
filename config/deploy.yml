@@ -8,8 +8,8 @@ servers:
       publish:
         - "8086:80"
     env:
-      DB_HOST: 100.90.13.19
-      DB_PORT: 5437
+      DB_HOST: iae_calc-db
+      SOLID_QUEUE_IN_PUMA: "true"
 proxy:
  ssl: true
  host: iae-calc.hassig.com
@@ -20,15 +20,13 @@ registry:
 env:
  secret:
    - RAILS_MASTER_KEY
-   - POSTGRES_PASSWORD
    - IAE_CALC_DATABASE_PASSWORD
    - KAMAL_REGISTRY_PASSWORD
  clear:
    SOLID_QUEUE_IN_PUMA: true
    DB_USERNAME: iae_calc
-   DB_PASSWORD: ${IAE_CALC_DATABASE_PASSWORD}
-   DB_HOST: 100.90.13.19
-   DB_PORT: 5437
+   DB_HOST: iae_calc-db
+   DB_PORT: 5432
 aliases:
  console: app exec --interactive --reuse "bin/rails console"
  shell: app exec --interactive --reuse "bash"
