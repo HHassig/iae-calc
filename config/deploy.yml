@@ -25,6 +25,7 @@ env:
  clear:
    SOLID_QUEUE_IN_PUMA: true
    DB_USERNAME: iae_calc
+   DB_PASSWORD: ${IAE_CALC_DATABASE_PASSWORD}
    DB_HOST: iae_calc-db
    DB_PORT: 5432
 aliases:
