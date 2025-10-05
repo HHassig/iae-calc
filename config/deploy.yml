@@ -20,6 +20,7 @@ registry:
 env:
  secret:
    - RAILS_MASTER_KEY
+   - POSTGRES_PASSWORD
    - IAE_CALC_DATABASE_PASSWORD
    - KAMAL_REGISTRY_PASSWORD
  clear:
@@ -28,6 +29,7 @@ env:
    DB_PASSWORD: ${IAE_CALC_DATABASE_PASSWORD}
    DB_HOST: iae_calc-db
    DB_PORT: 5432
+   DB_HOST: iae_calc-db
 aliases:
  console: app exec --interactive --reuse "bin/rails console"
  shell: app exec --interactive --reuse "bash"
