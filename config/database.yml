@@ -21,8 +21,8 @@ production:
     database: iae_calc_production
     username: <%= ENV.fetch("DB_USERNAME") { "iae_calc" } %>
     password: <%= ENV["IAE_CALC_DATABASE_PASSWORD"] %>
-    host: <%= ENV.fetch("DB_HOST") %>
-    port: <%= ENV.fetch("DB_PORT") { 5432 } %>
+    host: <%= ENV["DB_HOST"] %>
+    port: <%= ENV["DB_PORT"] %>
   cache:
     <<: *primary_production
     database: iae_calc_production_cache
