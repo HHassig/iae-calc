@@ -38,14 +38,16 @@ asset_path: /rails/public/assets
 builder:
  arch: amd64
 accessories:
- db:
-   image: postgres:16
-   host: 100.90.13.19
-   port: 5437:5432
-   env:
-     POSTGRES_USER: iae_calc
-     POSTGRES_PASSWORD: ${IAE_CALC_DATABASE_PASSWORD}
-     POSTGRES_DB: iae_calc_production
-   volumes:
-     - /srv/iae_calc/postgres-data:/var/lib/postgresql/data
-     - /srv/iae_calc/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+  db:
+    image: postgres:16
+    host: 100.90.13.19
+    port: 5437:5432
+    env:
+      secret:
+        - POSTGRES_PASSWORD
+      clear:
+        POSTGRES_USER: iae_calc
+        POSTGRES_DB: iae_calc_production
+    volumes:
+      - /root/iae_calc-db/data:/var/lib/postgresql/data
+      - /root/iae_calc-db/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
