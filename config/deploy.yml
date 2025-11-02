@@ -11,7 +11,7 @@ servers:
       DB_HOST: iae_calc-db
       SOLID_QUEUE_IN_PUMA: "true"
 proxy:
-  ssl: true
+  ssl: false
   host: iae-calc.hassig.com
 registry:
   server: localhost:5558
