@@ -15,6 +15,9 @@ proxy:
   host: iae-calc.hassig.com
 registry:
   server: localhost:5558
+  username: hhassig
+  password:
+    - KAMAL_REGISTRY_PASSWORD
 env:
   secret:
     - RAILS_MASTER_KEY
