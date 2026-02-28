@@ -1,48 +1,30 @@
 service: iae_calc
 image: hhassig/iae_calc
 servers:
- web:
-   hosts:
-     - 5.78.45.115
-   env:
-     DB_HOST: iae_calc-db
-     SOLID_QUEUE_IN_PUMA: "true"
+  web:
+    hosts:
+      - 100.71.23.44
+    options:
+      publish:
+        - "8086:80"
 proxy:
- ssl: true
- host: iae-calc.hassig.com
+  ssl: false
+  host: iae-calc.hassig.com
 registry:
- username: hhassig
- password:
-   - KAMAL_REGISTRY_PASSWORD
+  server: localhost:5558
 env:
- secret:
-   - RAILS_MASTER_KEY
-   - IAE_CALC_DATABASE_PASSWORD
-   - KAMAL_REGISTRY_PASSWORD
- clear:
-   SOLID_QUEUE_IN_PUMA: true
-   DB_USERNAME: iae_calc
-   DB_HOST: iae_calc-db
-   DB_PORT: 5432
+  secret:
+    - RAILS_MASTER_KEY
+    - KAMAL_REGISTRY_PASSWORD
+  clear:
+    SOLID_QUEUE_IN_PUMA: true
 aliases:
- console: app exec --interactive --reuse "bin/rails console"
- shell: app exec --interactive --reuse "bash"
- logs: app logs -f
- dbc: app exec --interactive --reuse "bin/rails dbconsole"
+  console: app exec --interactive --reuse "bin/rails console"
+  shell: app exec --interactive --reuse "bash"
+  logs: app logs -f
+  dbc: app exec --interactive --reuse "bin/rails dbconsole"
 volumes:
- - "iae_calc_storage:/rails/storage"
+  - "iae_calc_storage:/rails/storage"
 asset_path: /rails/public/assets
 builder:
- arch: amd64
-accessories:
- db:
-   image: postgres:16
-   host: 5.78.45.115
-   port: 5437:5432
-   env:
-     POSTGRES_USER: iae_calc
-     POSTGRES_PASSWORD: ${IAE_CALC_DATABASE_PASSWORD}
-     POSTGRES_DB: iae_calc_production
-   volumes:
-     - /srv/iae_calc/postgres-data:/var/lib/postgresql/data
-     - /srv/iae_calc/docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
+  arch: amd64

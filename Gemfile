@@ -4,7 +4,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby "3.3.5"
 gem "rails", "~> 8.0.2"
 gem "sprockets-rails"
-gem "pg", "~> 1.1"
+gem "sqlite3", ">= 1.4"
 gem "puma"
 gem "importmap-rails"
 gem "turbo-rails"
