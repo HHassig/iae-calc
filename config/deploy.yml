@@ -3,15 +3,18 @@ image: hhassig/iae_calc
 servers:
   web:
     hosts:
-      - 100.71.23.44
+      - 100.119.170.114
     options:
       publish:
         - "8086:80"
 proxy:
   ssl: false
   host: iae-calc.hassig.com
+ssh:
+  user: harrison
+
 registry:
-  server: localhost:5558
+  server: localhost:5556
 env:
   secret:
     - RAILS_MASTER_KEY
