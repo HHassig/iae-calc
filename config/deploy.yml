@@ -1,12 +1,13 @@
 service: iae_calc
 image: hhassig/iae_calc
+# Traffic arrives via cloudflared -> kamal-proxy on :80 (Host-header routing).
+# Do NOT add a direct `publish` port option: it is not used for serving and it
+# makes every redeploy fail with "port is already allocated" while the old
+# container still holds the port.
 servers:
   web:
     hosts:
       - 100.119.170.114
-    options:
-      publish:
-        - "8086:80"
 proxy:
   ssl: false
   host: iae-calc.hassig.com
