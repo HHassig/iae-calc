@@ -1,14 +1,8 @@
-<% if notice %>
-  <div class="alert alert-info alert-dismissible fade show m-1" role="alert">
-    <%= notice %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-    </button>
-  </div>
-<% end %>
-<% if alert %>
-  <div class="alert alert-warning alert-dismissible fade show m-1" role="alert">
-    <%= alert %>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
-    </button>
-  </div>
+<% { notice: "flash-notice", alert: "flash-alert" }.each do |type, css| %>
+  <% if flash[type].present? %>
+    <div class="flash <%= css %>" role="alert">
+      <span><%= flash[type] %></span>
+      <button type="button" aria-label="Dismiss" onclick="this.parentElement.remove()">&times;</button>
+    </div>
+  <% end %>
 <% end %>

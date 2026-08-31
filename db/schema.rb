@@ -10,10 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_03_11_084848) do
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "pg_catalog.plpgsql"
-
+ActiveRecord::Schema[8.0].define(version: 2026_08_31_190000) do
   create_table "surveys", force: :cascade do |t|
     t.boolean "death"
     t.boolean "life_threatening"
@@ -30,7 +27,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_03_11_084848) do
     t.boolean "re_operation"
     t.boolean "blood_loss_high"
     t.boolean "more_blood_units"
-    t.integer "patient_id"
+    t.string "patient_id"
     t.text "iae_description"
     t.text "iae_management"
     t.bigint "user_id", null: false

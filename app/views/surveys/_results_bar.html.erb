@@ -1,0 +1,18 @@
+<%# Live mode (survey: nil): spans are Stimulus targets painted by calculator_controller.
+    Static mode: values and severity bands come from the saved survey. %>
+<% targets = { eauiaic: "eauiaic", iae_severity: "severity", modified_satava: "satava", class_intra: "classintra", eaes: "eaes" } %>
+<div class="results-bar <%= survey ? "is-static" : "is-sticky" %>">
+  <% IaeGrading::SCALES.each do |key, scale| %>
+    <div class="live-result" data-band="<%= survey ? grade_band(survey, key) : "none" %>">
+      <h3 class="scale-name"><%= scale[:label] %></h3>
+      <p class="scale-range"><%= scale[:range] %></p>
+      <p class="scale-grade">
+        <% if survey %>
+          <span><%= grade_display(survey, key) %></span>
+        <% else %>
+          <span data-calculator-target="<%= targets[key] %>">–</span>
+        <% end %>
+      </p>
+    </div>
+  <% end %>
+</div>

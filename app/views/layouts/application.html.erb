@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>IaeCalc</title>
+    <title>iAE Grade Calculator</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Grade an intraoperative adverse event (iAE) across the five published classification systems: EAUiaiC, iAE Severity, Modified Satava, ClassIntra, and EAES.">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
@@ -25,9 +26,10 @@
     </script>
   </head>
 
-  <body class="bg-white">
+  <body class="site-body">
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <%= yield %>
+    <main class="site-main"><%= yield %></main>
+    <%= render "shared/footer" %>
   </body>
 </html>

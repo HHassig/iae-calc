@@ -1,0 +1,19 @@
+<li class="question-row">
+  <div class="question-text">
+    <span><%= question[:prompt] %></span>
+    <% if question[:note] %>
+      <span class="hover-container">
+        <button type="button" class="info-btn" aria-label="More information">
+          <i class="fa-solid fa-circle-info"></i>
+        </button>
+        <span class="hover-popup"><%= question[:note] %></span>
+      </span>
+    <% end %>
+  </div>
+  <div class="switch-field">
+    <%= f.radio_button question[:key], true %>
+    <%= f.label "#{question[:key]}_true", "Yes", class: "yes" %>
+    <%= f.radio_button question[:key], false, checked: f.object[question[:key]] != true %>
+    <%= f.label "#{question[:key]}_false", "No", class: "no" %>
+  </div>
+</li>
